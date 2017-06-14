@@ -1,0 +1,12 @@
+{
+  "title": "Atmo Toolkit",
+  "type": "tool",
+  "tags": [
+    "roleplay",
+    "realism"
+  ],
+  "ignore": [
+    "*.iml",
+    "*.idea"
+  ]
+}
