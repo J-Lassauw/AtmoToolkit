@@ -1,8 +1,7 @@
 ATK_Active = false
-ATK_Selection = 1
 
-IncludeCS("atmotk/hud/selection_hud.lua")
 IncludeCS("atmotk/cl_action.lua")
+IncludeCS("atmotk/hud/selection_hud.lua")
 
 function ATK_SetStatus()
     ATK_Active = net.ReadBool()

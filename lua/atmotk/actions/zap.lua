@@ -9,7 +9,8 @@ ZapAction = {
     },
 
     -- GUI representation of options
-    ["gui_options"] = {
+    ["guiOptions"] = {
+        ["iconPath"] = "vgui/bolt-spell-cast.png",
         ["effectName"] = {
             ["print"] = "Effect",
             ["type"] = "combo",
