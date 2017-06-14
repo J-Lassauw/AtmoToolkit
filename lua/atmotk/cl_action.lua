@@ -26,12 +26,9 @@ local function ATK_OnAttackBind(bind)
     if (bind == "+attack2") then
         print("Show Config")
     elseif (bind == "+attack") then
-        print("Doing action " .. ATK_SelectedAction["name"])
         net.Start("ATK_Action")
         net.WriteString(ATK_SelectedAction["name"])
         for _, v in SortedPairs(ATK_SelectedAction["perams"]) do
-            local paramName = v["name"]
-            print(paramName)
             print(ATK_SelectedAction["default"][paramName])
             if (ATK_SelectedAction["values"][paramName] == nil) then
                 v["export"](ATK_SelectedAction["default"][paramName])
