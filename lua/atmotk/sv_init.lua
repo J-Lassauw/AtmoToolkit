@@ -9,17 +9,17 @@ include("atmotk/sv_action.lua")
 
 function ATK_Add_CS_LUA_Files()
     local clientFiles = file.Find("atmotk/cl_*.lua", "LUA")
-    table.ForEach(clientFiles, function(_, v)
+    for _, v in pairs(clientFiles) do
         AddCSLuaFile("atmotk/" .. v)
-    end)
-    local clientFiles = file.Find("atmotk/actions/cl_*.lua", "LUA")
-    table.ForEach(clientFiles, function(_, v)
+    end
+    local clientFiles = file.Find("atmotk/actions/*.lua", "LUA")
+    for _, v in pairs(clientFiles) do
         AddCSLuaFile("atmotk/actions/" .. v)
-    end)
+    end
     local clientFiles = file.Find("atmotk/hud/*.lua", "LUA")
-    table.ForEach(clientFiles, function(_, v)
+    for _, v in pairs(clientFiles) do
         AddCSLuaFile("atmotk/hud/" .. v)
-    end)
+    end
 end
 
 ATK_Add_CS_LUA_Files()

@@ -1,12 +1,12 @@
-SelectedAction = {}
-ATK_Available_Actions = {}
+local SelectedAction = {}
+local ATK_Available_Actions = {}
 
-function ATK_Register_Actions()
-    local actionFiles = file.Find("atmotk/actions/cl_*.lua", "LUA")
-    table.ForEach(actionFiles, function(_, v)
+local function ATK_Register_Actions()
+    local actionFiles = file.Find("atmotk/actions/*.lua", "LUA")
+    for _, v in pairs(actionFiles) do
         print("adding " .. v)
         table.insert(ATK_Available_Actions, include("atmotk/actions/" .. v))
-    end)
+    end
     SelectedAction = ATK_Available_Actions[1]
 end
 
@@ -23,13 +23,14 @@ local function ATK_OnBindPress(_, bind)
         print("Doing action " .. SelectedAction["name"])
         net.Start("ATK_Action")
         net.WriteString(SelectedAction["name"])
-        table.ForEach(SelectedAction["perams"], function(k, v)
-            if (SelectedAction["values"][k] == nil) then
-                v(SelectedAction["default"][k])
+        for _, v in SortedPairs(action["perams"]) do
+            local paramName = v["name"]
+            if (SelectedAction["values"][paramName] == nil) then
+                v["export"](SelectedAction["default"][paramName])
             else
-                v(SelectedAction["values"][k])
+                v["export"](SelectedAction["values"][paramName])
             end
-        end)
+        end
         net.SendToServer()
     end
 end
