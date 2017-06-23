@@ -1,6 +1,6 @@
-ZapAction = {
+VFXAction = {
     -- Shared Name / UID
-    ["name"] = "zap",
+    ["name"] = "VFX",
 
     -- Network values by client
     ["perams"] = {
@@ -11,14 +11,19 @@ ZapAction = {
     -- GUI representation of options
     ["guiOptions"] = {
         ["iconPath"] = "vgui/bolt-spell-cast.png",
-        ["effectName"] = {
+        ["actionPrintName"] = "Visaul Effects",
+        ["Effect"] = {
             ["print"] = "Effect",
             ["type"] = "combo",
-            ["choices"] = {}
+            ["choices"] = {
+                { ["printName"] = "Zap", ["valueAction"] = { ["effectName"] = "TeslaHitBoxes" } },
+                { ["printName"] = "Blood", ["valueAction"] = { ["effectName"] = "BloodImpact" } }
+            }
         },
-        ["soundEnabled"] = {
+        ["Sound Enabled"] = {
             ["print"] = "Play Sound",
-            ["type"] = "check"
+            ["type"] = "check",
+            ["value"] = "soundEnabled"
         }
     },
 
@@ -59,4 +64,4 @@ ZapAction = {
         end
     end
 }
-return ZapAction
+return VFXAction

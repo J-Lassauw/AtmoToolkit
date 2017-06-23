@@ -24,7 +24,6 @@ function ATK_Add_CS_LUA_Files()
         AddCSLuaFile("atmotk/vgui/" .. v)
     end
 end
-
 ATK_Add_CS_LUA_Files()
 
 function ATK_Toggle(ply)
@@ -35,7 +34,6 @@ function ATK_Toggle(ply)
         ATK_Enable(ply)
     end
 end
-
 concommand.Add("atmotk_toggle", ATK_Toggle, true, "", 0)
 
 

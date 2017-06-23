@@ -4,7 +4,6 @@ ATK_Available_Actions = {}
 local function ATK_Register_Actions()
     local actionFiles = file.Find("atmotk/actions/*.lua", "LUA")
     for _, v in pairs(actionFiles) do
-        print("adding " .. v)
         table.insert(ATK_Available_Actions, include("atmotk/actions/" .. v))
     end
     ATK_SelectedAction = ATK_Available_Actions[1]
@@ -24,12 +23,12 @@ end
 
 local function ATK_OnAttackBind(bind)
     if (bind == "+attack2") then
-        print("Show Config")
+        ATK_Show_Action_Config()
     elseif (bind == "+attack") then
         net.Start("ATK_Action")
         net.WriteString(ATK_SelectedAction["name"])
         for _, v in SortedPairs(ATK_SelectedAction["perams"]) do
-            print(ATK_SelectedAction["default"][paramName])
+            local paramName = v["name"]
             if (ATK_SelectedAction["values"][paramName] == nil) then
                 v["export"](ATK_SelectedAction["default"][paramName])
             else

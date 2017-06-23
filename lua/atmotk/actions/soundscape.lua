@@ -1,4 +1,4 @@
-ZapAction = {
+SoundScape = {
     -- Shared Name / UID
     ["name"] = "soundscape",
 
@@ -44,13 +44,12 @@ ZapAction = {
         timer.Simple(0.5, function() marker:Remove() end)
         marker:SetPos(ply:GetEyeTrace().HitPos)
         if (string.len(args["soundNameVar"]) >= 1) then
-            for i = args["soundNameVarRangeStart"], args["soundNameVarRangeEnd"] do
-                local soundPath = string.Replace(args["soundName"], args["soundNameVar"], util.TypeToString(i))
-                marker:EmitSound(soundPath)
-            end
+            local soundValue = math.random(args["soundNameVarRangeStart"], args["soundNameVarRangeEnd"])
+            local soundPath = string.Replace(args["soundName"], args["soundNameVar"], util.TypeToString(soundValue))
+            marker:EmitSound(soundPath)
         else
             marker:EmitSound(args["soundName"])
         end
     end
 }
-return ZapAction
+return SoundScape

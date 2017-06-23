@@ -25,4 +25,5 @@ local function ATK_DrawHud()
         end
     end
 end
-hook.Add("HUDPaint", "atmotk_hud", ATK_DrawHud)
+
+hook.Add("PostDrawHUD", "atmotk_hud", ATK_DrawHud)
